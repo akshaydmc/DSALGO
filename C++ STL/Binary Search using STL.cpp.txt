@@ -1,0 +1,29 @@
+#include <algorithm> 
+#include <iostream> 
+using namespace std; 
+  
+void show(int a[], int arraysize) 
+{ 
+    for (int i = 0; i < arraysize; ++i) 
+        cout << a[i] << " "; 
+} 
+  
+int main() 
+{ 
+    int a[] = { 2, 5, 12, 7, 24, 8, 1, 43, 10, 0 }; 
+    int asize = sizeof(a) / sizeof(a[0]); 
+    
+    sort(a, a + asize); 
+    
+    if (binary_search(a, a + 10, 8)) 
+        cout << "\nElement found in the array"; 
+    else
+        cout << "\nElement not found in the array"; 
+  
+    if (binary_search(a, a + 10, 10)) 
+        cout << "\nElement found in the array"; 
+    else
+        cout << "\nElement not found in the array"; 
+  
+    return 0; 
+} 
