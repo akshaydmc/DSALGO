@@ -1,0 +1,94 @@
+#include<bits/stdc++.h>
+using namespace std;
+int priority(char c)
+{
+    if((c=='^'))
+    {
+        return 3;
+    }
+    else if(c=='*'||c=='/')
+    {
+        return 2;
+        
+    }
+    else if(c=='+'||c=='-')
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+void infixtopostfix(string s)
+{
+string os;
+stack<char> st;
+
+int i;
+char c;
+for(i=0;i<s.length();i++)
+    {
+        if((s[i]>='a'&&s[i]<='z') || (s[i]>='A'&& s[i]<='Z'))
+        {// if char then
+            os+=s[i];
+        }
+        else if(s[i]=='(')
+        {// if open brace then just push it to stack
+        st.push('(');
+        }
+        else if(s[i]==')')
+        {// if close brace then pop out all elements till open brace
+        while(!st.empty()&& st.top()!='(')
+        {
+             c= st.top();
+             st.pop();
+             os+=c;
+        }
+        // now all strings are parsed and we lefted with ) we should not print it just pop
+        if( st.top()=='(')
+        {
+             c= st.top();
+             st.pop();
+        }
+        }
+        else
+        {
+            // now => any operator which is not in ( ) and not in a-z
+            while(!st.empty()&&priority(st.top())>=priority(s[i]))
+            {
+                // if priority s[i]<= top=> we got a + and stack top is * then  we take out m.p ie *
+             c= st.top();
+             st.pop();
+             os+=c;
+                
+            }
+            // if priority of s[i]> p of top then we just push it to stack ex s has + we encountered * so stack will be + *
+            st.push(s[i]);
+        }
+            
+        }
+        
+        while(!st.empty())
+        {
+             c= st.top();
+             st.pop();
+             os+=c;   
+        }
+        cout<<os<<endl;
+    }
+int main()
+ {
+int t,i;
+cin>>t;
+char c;
+while(t--)
+{
+    string s;
+    
+    cin>>s;
+    infixtopostfix(s);
+}
+	return 0;
+}
