@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+int t;
+cin>>t;
+while(t--)
+{
+    string s;
+    cin>>s;
+    stack<int> st;
+    int i;
+    for(i=0;i<s.length();i++)
+    {
+        if(isdigit(s[i]))
+        {
+            st.push((s[i]-'0'));
+        }
+        else
+        {
+            int a,b;
+            a=st.top();
+            st.pop();
+            b=st.top();
+            st.pop();
+            if(s[i]=='*')
+            {
+                st.push(static_cast<int>(b*a));
+                // static_cast is not necessory at all  but while pushing -'0' is necessory
+                // as it gives the original int value rather than the ascii string value
+                // if we make typecov to int 1 would be converted to the  ascii code of 1 whose distance from 0 is 1 so we push the distance
+            }
+            else if(s[i]=='-')
+            {
+             st.push(static_cast<int>(b-a));   
+            }
+            else if(s[i]=='/')
+            {
+             st.push(static_cast<int>(b/a));   
+            }
+            else if(s[i]=='+')
+            {
+             st.push(static_cast<int>(b+a));   
+            }
+            
+        }
+    }
+    cout<<st.top()<<endl;
+            st.pop();
+}
+	return 0;
+}
