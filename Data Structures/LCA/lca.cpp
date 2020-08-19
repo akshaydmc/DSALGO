@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <vector>
+#include <bits/stdc++.h>
  using namespace std;
  #define max 100
 #define lg_max 7
