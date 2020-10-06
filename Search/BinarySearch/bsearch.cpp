@@ -13,9 +13,9 @@ bool binary_search(int number)
     int lower = 0;
     int mid;
 
-    do
+    while(lower < higher)
     {
-        mid = (higher + lower) / 2;
+        mid = lower + (higher - lower) / 2; //To avoid integer overflow when adding lower and higher
         if (number == myarray[mid])
         {
             std::cout << "found at pos: " << mid + 1 << std::endl;
@@ -29,7 +29,7 @@ bool binary_search(int number)
 
         if (higher - lower == 1)
             return false;
-    } while (true);
+    }
 }
 
 
