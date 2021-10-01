@@ -10,7 +10,7 @@ typedef struct chess_moves {
 
 // displays the knight tour solution
 void printTour(int tour[N][N]) {
-   int i,j;
+      long long i,j;
    for (i = 0; i < N; i++) {
       for (j = 0; j < N; j++) {
           cout<<tour[i][j]<<"\t";
@@ -21,8 +21,8 @@ void printTour(int tour[N][N]) {
 
 // check if the next move (as per knight's constraints) is possible
 bool isMovePossible(chess_moves next_move, int tour[N][N]) {
-   int i = next_move.x;
-   int j = next_move.y;
+      long long i = next_move.x;
+      long long j = next_move.y;
    if ((i >= 0 && i < N) && (j >= 0 && j < N) && (tour[i][j] == 0))
       return true;
    return false;
@@ -32,7 +32,7 @@ bool isMovePossible(chess_moves next_move, int tour[N][N]) {
 // recursive function to find a knight tour
 bool findTour(int tour[N][N], chess_moves move_KT[],
                chess_moves curr_move, int move_count) {
-   int i;
+      long long i;
    chess_moves next_move;
    if (move_count == N*N-1) {
       // Knight tour is completed i.e all cells on the
@@ -62,10 +62,10 @@ bool findTour(int tour[N][N], chess_moves move_KT[],
    return false;
 }
 
-// wrapper function
+// wrapper function to find tour
 void knightTour() {
-   int tour[N][N];
-   int i,j;
+   long long tour[N][N];
+      long long i,j;
 
    // initialize tour matrix
    for (i = 0; i < N; i++) {
