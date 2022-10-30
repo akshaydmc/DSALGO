@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <vector>
- using namespace std;
+using namespace std;
  #define max 100
 #define lg_max 7
  vector<int> graph[max];
