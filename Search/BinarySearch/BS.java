@@ -26,7 +26,6 @@ class BinarySearch {
 		return -1; 
 	} 
 
-	// Driver method to test above 
 	public static void main(String args[]) 
 	{ 
 		BinarySearch ob = new BinarySearch(); 
