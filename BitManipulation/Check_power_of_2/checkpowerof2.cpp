@@ -18,5 +18,5 @@ int main()
 	else
 		printf("No, the number is not a power of two\n");
 
-	return 0;
+	return ;
 }
