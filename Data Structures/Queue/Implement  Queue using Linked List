@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct LLQueueNode
+{
+	int d;
+	LLQueueNode* next;
+};
+
+LLQueueNode *front=NULL, *rear=NULL;
+void insert( int i)
+{
+	LLQueueNode *newn=new LLQueueNode();
+	newn->d=i;
+	newn->next=NULL;
+//2 special cases	
+if((front==rear) &&(front==NULL) )
+{
+	// no elements so we have to add it
+	// so both pointers have to be udated from null to the single node
+	front=newn;
+	rear=newn;
+}
+else
+{
+rear->next = newn;
+rear= newn;	
+}
+
+}
+int deleted()
+{
+	if((front==rear) && front!=NULL)
+	{
+		// => single element if deleted then both pointers will be null
+		int a= front->d;
+		front =NULL;
+		rear=NULL;
+		free(front);
+		return a;
+	}
+	else if((front==rear) && front==NULL)
+	{// means no ele to be deleted
+	cout<<" no ele to delete"<<endl;
+		
+	}
+	else{
+		LLQueueNode *newn=front;
+		front=front->next;
+		int a= newn->d;
+		free(newn);
+		return a;
+	}
+}
+int main()
+{
+	int q=-1;
+	while(q!=3)
+	{
+cout<<"1.insertion  at rear"<<endl;
+cout<<" 2. deletion at front"<<endl;
+cout<<" 3. exit"<<endl;
+cin>>q;
+if(q==1)
+{cout<<" enter an element to insert in queue"<<endl;
+int r;
+cin>>r;
+	insert(r);
+}
+ if(q==2)
+{
+	cout<<deleted()<<endl;
+	
+}
+}
+}
